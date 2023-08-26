@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+    WEBSHOP
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <a href="/login" class="login_link">Login</a>
+    </div>
+    <div class="title container-fluid">
+        <div class="row">
+            <h1 class="col-md-5">PRODUCT</h1>
+            <a href="{{ url_for('get_products', session=session) }}" class="col-md-5 menu">Go back to shop</a>
+            <span class="col-md-2">
+                <a href="{{ url_for('show_cart', session=session) }}">
+                    <img src="{{ url_for('get_picture', product_picture='cart_white.png') }}">
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="screen">
+         <form method="POST" action="{{ url_for('handle_product', id_product=product.id, session=session) }}">
+            {{ form.csrf_token }}
+             <div class="parent">
+                 <div class="child">
+                    <img src="{{ url_for('get_picture', product_picture=product.picture) }}" alt="{{product.picture}}">
+                 </div>
+                <div class="child">
+                    <p><b>{{ form.id.label }}</b> {{ form.id(disabled=True) }}</p>
+                    <p><b>{{ form.name.label }}</b> {{ form.name(disabled=True) }}</p>
+                    <p><b>{{ form.description.label }}</b>  {{ form.description(disabled=True) }}</p>
+                    <p><b>{{ form.price.label }}</b>{{ form.price(disabled=True) }}</p>
+                    <p><b>{{ form.quantity.label }}</b>{{ form.quantity }}</p>
+                    <br>
+                    <input type="submit" value="Add to cart">
+                </div>
+             </div>
+         </form>
+    </div>
+
+{% endblock %}

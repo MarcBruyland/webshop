@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    WEB-SHOP
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <a href="/login" class="login_link">Login</a>
+    </div>
+    <div class="title container-fluid">
+        <div class="row">
+            <h1 class="col-md-10">SHOP</h1>
+            <span class="col-md-2">
+                <a href="{{ url_for('show_cart', session=session) }}">
+                    <img src="{{ url_for('get_picture', product_picture='cart_white.png') }}" alt="cart">
+                </a>
+            </span>
+        </div>
+    </div>
+    <div class="screen">
+    <table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>price in €</th>
+            <th>picture</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in catalog: %}
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                    <a href="{{ url_for('handle_product', id_product=product.id, session=session) }}">
+                        <img src="{{ url_for('get_picture', product_picture=product.picture) }}" alt="{{product.picture}}">
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+
+    </div>
+
+{% endblock %}

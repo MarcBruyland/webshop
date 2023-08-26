@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+    WEBSHOP
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <a href="/login" class="login_link">Login</a>
+    </div>
+    <div class="title container-fluid">
+        <div class="row">
+            <h1 class="col-md-6">SHOPPING CART</h1>
+            <a href="{{ url_for('get_products', session=session) }}" class="col-md-3 menu">Continue shopping</a>
+            <a href="{{ url_for('login', session=session) }}" class="col-md-3 menu">Checkout</a>
+        </div>
+    </div>
+    <div class="screen">
+    <table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>product id</th>
+            <th>name</th>
+            <th>price</th>
+            <th>quantity</th>
+            <th>increase/decrease</th>
+            <th>total</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for line in order: %}
+            <tr>
+                <td>{{line.id}}</td>
+                <td>{{line.id_product}}</td>
+                <td>{{line.name}}</td>
+                <td>{{line.price}}</td>
+                <td>{{line.quantity}}</td>
+                <td><a href="{{ url_for('increase_quantity', id_product=line.id_product, session=session) }}">+</a>/
+                <a href="{{ url_for('decrease_quantity', id_product=line.id_product, session=session) }}">-</a></td>
+                <td>{{line.subtotal}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{total}}</td>
+            </tr>
+    </table>
+    </div>
+
+{% endblock %}

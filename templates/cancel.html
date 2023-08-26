@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+    WEBSHOP
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <a href="/login" class="login_link">Login</a>
+    </div>
+    <div class="title container-fluid">
+        <div class="row">
+            <h1 class="col-md-6">PAYMENT WAS CANCELED</h1>
+            <a href="{{ url_for('home') }}" class="col-md-3 menu">Back to shop</a>
+            <span class="col-md-3 user">{{ user["id"] }} - {{ user["email"] }}</span>
+        </div>
+    </div>
+    <div class="screen">
+        Your payment was canceled. Please continue your shopping ..
+    </div>
+
+{% endblock %}

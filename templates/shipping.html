@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+    WEBSHOP
+{% endblock %}
+
+{% block content %}
+    <div class="title container-fluid">
+        <div class="row">
+            <h1 class="col-md-6">CHECKOUT STEP 2/3: SHIPPING</h1>
+            <a href="{{ url_for('get_products', session=session) }}" class="col-md-3 menu">Continue shopping</a>
+            <span class="col-md-3 user">{{ id_user }} - {{ email }}</span>
+        </div>
+    </div>
+    <div class="screen">
+       <form method="POST" action="{{ url_for('shipping', id_user=id_user, session=session, id_order=id_order) }}">
+            <b>{{ form.shipping_address.label }}</b>
+            {{ form.shipping_address(size=100) }}
+            <BR>
+            {{form.submit(class="btn btn-primary")}}
+       </form>
+    </div>
+
+{% endblock %}

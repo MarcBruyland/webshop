@@ -1,0 +1,63 @@
+/******************************* TAG SELECTORS *****************************/
+label {
+width: 150px;
+text-align: left;
+}
+
+/******************************* CLASS SELECTORS *****************************/
+.login {
+background-color: black;
+color: white;
+text-align: right;
+padding-right: 10px;
+}
+
+.login_link {
+color: white;
+}
+
+.title {
+background-color: purple;
+color: white;
+}
+
+.user {
+text-align: right;
+padding: 15px 0;
+}
+
+.menu {
+color:white;
+padding: 15px 0;
+}
+
+.menu:hover {
+color:yellow;
+}
+
+.save_button {
+background-color: green;
+color: white;
+margin-right: 10px;
+}
+
+.error_message {
+color: red;
+}
+ .screen {
+ margin-top: 15px;
+ margin-left: 15px;
+ }
+
+.todo {
+    width: 600px;
+}
+
+.parent {
+}
+.child {
+  display: inline-block;
+  vertical-align: bottom;
+  padding: 15px;
+}
+/******************************* ID SELECTORS ********************************/
